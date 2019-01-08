@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set backspace=indent,eol,start
 set guifont=Monospace\ 12
+set shell=/bin/bash
 
 autocmd cursorhold * set nohlsearch
 autocmd cursormoved * set hlsearch
@@ -12,18 +13,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'w0rp/ale'
 Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
+Plugin 'davidhalter/jedi'
 Plugin 'https://github.com/jpo/vim-railscasts-theme.git'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'klen/python-mode'
+Plugin 'python-mode/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdcommenter'
@@ -172,3 +172,10 @@ nmap <S-B> i<cr><Esc>
 
 autocmd FileType python map <buffer> <Leader><Leader>p :call Autopep8()<CR>
 let g:matchmaker_enable_startup = 1
+
+let g:NERDTreeDirArrows=0
+let NERDTreeMapOpenInTab='<ENTER>'
+
+if has('python3')
+  silent! python3 1
+endif
